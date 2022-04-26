@@ -1,51 +1,25 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeStackScreen from './home.routes';
-import Foundation from 'react-native-vector-icons/Foundation';
-import Feather from 'react-native-vector-icons/Feather';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import DiscoveryScreen from '../screens/DiscoveryScreen';
-import CreatePostScreen from '../screens/CreatePostScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import {createStackNavigator} from '@react-navigation/stack';
+import BottomHomeNavigator from './bottomHomeNavigator.routes';
+import StoryScreen from '../screens/StoryScreen';
 
-const Tab = createBottomTabNavigator();
+const Root = createStackNavigator();
 
 const Route = () => {
-  <Tab.Navigator
-    screenOptions={({route}) => ({
-      tabBarIcon: ({focused, color, size}) => {
-        if (route.name === 'Home') {
-          return <Foundation name="home" size={size} color={color} />;
-        }
-        if (route.name === 'Discovery') {
-          return <Feather name="search" size={size} color={color} />;
-        }
-        if (route.name === 'Post') {
-          return <Feather name="plus-square" size={size} color={color} />;
-        }
-        if (route.name === 'Notifications') {
-          return <AntDesign name="hearto" size={size} color={color} />;
-        }
-        if (route.name === 'Profile') {
-          return <Ionicons name="person-outline" size={size} color={color} />;
-        }
-      },
-      tabBarActiveTintColor: '#000',
-      tabBarInactiveTintColor: 'gray',
-      tabBarShowLabel: false,
-    })}>
-    <Tab.Screen
-      name="Home"
-      component={HomeStackScreen}
-      options={{headerShown: false}}
-    />
-    <Tab.Screen name="Discovery" component={DiscoveryScreen} />
-    <Tab.Screen name="Post" component={CreatePostScreen} />
-    <Tab.Screen name="Notifications" component={NotificationsScreen} />
-    <Tab.Screen name="Profile" component={ProfileScreen} />
-  </Tab.Navigator>;
+  return (
+    <Root.Navigator>
+      <Root.Screen
+        name="Home"
+        component={BottomHomeNavigator}
+        options={{headerShown: false}}
+      />
+      <Root.Screen
+        name="Story"
+        component={StoryScreen}
+        options={{headerShown: false}}
+      />
+    </Root.Navigator>
+  );
 };
 
 export default Route;

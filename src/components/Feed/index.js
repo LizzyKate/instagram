@@ -1,10 +1,11 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 import Post from '../Post';
-import Stories from '../Stories';
+import Stories from '../UserStoriesPreview';
 
 const data = [
   {
+    id: 1,
     user: {
       imageUri:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
@@ -17,6 +18,7 @@ const data = [
     postedAt: '6 days ago',
   },
   {
+    id: 2,
     user: {
       imageUri:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
@@ -29,6 +31,7 @@ const data = [
     postedAt: '6 days ago',
   },
   {
+    id: 3,
     user: {
       imageUri:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
@@ -46,7 +49,7 @@ const Feed = () => {
   return (
     <FlatList
       ListHeaderComponent={Stories}
-      keyExtractor={item => Math.random(item)}
+      keyExtractor={item => item.id}
       data={data}
       renderItem={({item}) => <Post detail={item} />}
     />

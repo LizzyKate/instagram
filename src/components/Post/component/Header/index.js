@@ -5,7 +5,6 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/Entypo';
 
 const Header = ({user}) => {
-  console.log(user);
   return (
     <View style={styles.container}>
       <View style={styles.left}>
@@ -13,7 +12,7 @@ const Header = ({user}) => {
         <Text>{user.name}</Text>
       </View>
       <View style={styles.right}>
-        <Icon name="dots-three-vertical" size={15} color="" />
+        <Icon name="dots-three-vertical" size={15} color="#000000" />
       </View>
     </View>
   );
